@@ -6,42 +6,54 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 18:51:15 by redrouic          #+#    #+#             */
-/*   Updated: 2024/02/21 19:07:46 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/03/05 18:05:24 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <signal.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include "../icl/minitalk.h"
+
+/*
 int check = 0;
-
-int	main(int ac, char **av)
+int get_client_pid(int sig, siginfo_t *info, void *context)
 {
-	if (ac != 3)
-	return (0);
-}
+	int	pid;
 
-static void act_start(void) {
+    (void)context;
+    (void)sig;
+	pid = 0;
+    pid = info->si_pid;
+    if (info->si_signo == SIGUSR1)
+       check = 1;
+	return (pid);
+}
+*/
+
+static void server(void)
+{
     struct sigaction act;
-    int min = 24;
-    int sec = 59;
 
     act.sa_flags = SA_SIGINFO|SA_RESTART;
-    act.sa_sigaction = get_client_pid;
+  //  act.sa_sigaction = (void *)get_client_pid;
     sigaction(SIGUSR1, &act, NULL);
+	ft_putnbr(getpid());
     while (1) {
-        if (min == 0 && sec == 0)
-            break;
-        if (sec == 0) {
-            sec = 59;
-            min--;
-        }
         usleep(1000000);
-        sec--;
-        if (check > 0) {
-            send_seq(str2seq(time2str(min, sec)));
-            check = 0;
-        }
+		
     }    
 }
 
+int	main(int ac, char **av)
+{
+	(void)av;
+	(void)ac;
+	server();
+	return (0);
+}
+/*
 char **str2seq(char *str) {
     char **seq = NULL;
     int y = 0;
@@ -89,7 +101,7 @@ char *time2str(int min, int sec) {
     return str;    
 }
 
-static void act_clock(void) {
+static void client(void) {
     struct sigaction act;
     char *buf = get_server_pid();
     char *res = NULL;
@@ -112,3 +124,4 @@ static void act_clock(void) {
     free(res);
     return;
 }
+*/

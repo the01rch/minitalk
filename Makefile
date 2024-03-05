@@ -6,17 +6,18 @@
 #    By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/04 19:41:59 by redrouic          #+#    #+#              #
-#    Updated: 2024/02/21 19:11:26 by redrouic         ###   ########.fr        #
+#    Updated: 2024/03/05 18:04:36 by redrouic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC	=	src/main.c
+SRC	=	src/main.c\
+		src/util.c
 
 CC	=	gcc
 
 OBJ	=	$(SRC:.c=.o)
 
-NAME	=	client
+NAME	=	server
 
 CFLAGS	+=	-Wall -Wextra -Werror -g3
 
