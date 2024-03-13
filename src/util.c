@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 19:11:55 by redrouic          #+#    #+#             */
-/*   Updated: 2024/03/12 17:49:17 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:22:31 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,3 @@ long long int	ft_atoi(const char *nptr)
 	}
 	return (b * sign);
 }
-

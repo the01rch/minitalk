@@ -6,7 +6,7 @@
 /*   By: redrouic <redrouic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 16:27:08 by redrouic          #+#    #+#             */
-/*   Updated: 2024/03/12 18:33:23 by redrouic         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:24:17 by redrouic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static int	is_digit(char *str)
 	return (1);
 }
 
-static void send_char(int pid, char c)
+static void	send_char(int pid, char c)
 {
-	int b;
+	int	b;
 
 	b = 0;
 	while (b < 8)
@@ -39,7 +39,7 @@ static void send_char(int pid, char c)
 	}
 }
 
-static void client(char *apid, char *msg)
+static void	client(char *apid, char *msg)
 {
 	int		pid;
 
@@ -52,11 +52,11 @@ static void client(char *apid, char *msg)
 	send_char(pid, '\n');
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	if (ac != 3)
 		return (0);
-	if (!is_digit(av[1]))	
+	if (!is_digit(av[1]))
 		return (0);
 	if (av[2][0] == '\0')
 		return (0);
